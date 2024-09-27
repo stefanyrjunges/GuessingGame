@@ -1,4 +1,4 @@
-<h1>Word Guess Game</h1>
+<h1>Guessing Game</h1>
 
 <p>This repository contains a simple Java-based <strong>Word Guess Game</strong> where players try to guess a randomly selected word by entering one letter at a time. The player has a limited number of attempts to guess the word correctly.</p>
 

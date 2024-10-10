@@ -10,8 +10,7 @@ public class WordGuess {
     
     public WordGuess() {
     }
-
-    //setter
+    
     public void setUserInput(char userInput){
         this.userInput = userInput;
     }

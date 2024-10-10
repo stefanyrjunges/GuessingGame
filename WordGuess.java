@@ -1,7 +1,4 @@
 package wordguess;
-
-import java.util.Scanner;
-
 public class WordGuess {
     
     private String[] secretWord;
@@ -10,67 +7,76 @@ public class WordGuess {
     private boolean found, correctGuess;
     private int count;
     StringBuffer sb;
-    Scanner scan = new Scanner(System.in);
     
     public WordGuess() {
     }
 
+    //setter
     public void setUserInput(char userInput){
         this.userInput = userInput;
     }
     
-    public void setSecretWord(String[] secretWord) {
+    public void setSecretWord(String[] secretWord){
         this.secretWord = secretWord;
     }
-    
-    public void compute(){
-    
+
+
+    public void initalize(){
         randomWord = secretWord[(int) (Math.random()*secretWord.length)];
+        System.out.println(randomWord);
+
+        //initializing sb
         sb = new StringBuffer();
-        
+
             for (int i = 0; i < randomWord.length(); i++){
                 sb.append('*');
             }
         
         revealWord = sb.toString();
         count = 6;
-        System.out.println("The word is: " + revealWord + " You have 6 chances to guess a letter.");
+        found = false;
         
-            while (!found && count > 0){
-                correctGuess = false;
-                System.out.println("Enter a letter.");
-                userInput = scan.next().toLowerCase().charAt(0);
-                
-                    for (int i = 0; i < randomWord.length(); i++){
-                        if (userInput == randomWord.charAt(i)){
-                            sb.setCharAt(i, userInput);
-                            correctGuess = true;
-                        }
-                     }
-                        
-                    revealWord = sb.toString();
-                        
-                    if (revealWord.equals(randomWord)){
-                        System.out.println("Congrats! You did it! The word was " + randomWord);
-                        found = true;
-                        break;
+    }
+
+    public void compute(){
+            correctGuess = false;
+            setUserInput(userInput);
+            
+                for (int i = 0; i < randomWord.length(); i++){
+                    if (userInput == randomWord.charAt(i)){
+                        sb.setCharAt(i, userInput);
+                        correctGuess = true;
                     }
-                        
-                    if (correctGuess && !revealWord.equals(randomWord)){
-                        System.out.println("Nice! Keep going! " + revealWord);
-                            
-                    } else if (!correctGuess) {
-                        count--;
-                        System.out.println("Not really! You've got " + count + " chances!");
+                }
+
+                    revealWord = sb.toString();
+                    
+                    if (revealWord.equals(randomWord)){
+                        found = true;
                     }
                     
-                    if (!found && count == 0){
-                        System.out.println("Sorry, you ran out of guesses :(");
-                    }     
-            }
+                    if (!correctGuess) {
+                         count--;}   
     }
 
     public String getRevealWord() {
         return revealWord;
     }
+
+    public String getRandomWord() {
+        return randomWord;
+    }
+
+    public boolean isCorrectGuess(){
+        return correctGuess;
+    }
+
+    public int getCount(){
+        return count;
+    }
+
+    public boolean isFound(){
+        return found;
+    }
+
 }

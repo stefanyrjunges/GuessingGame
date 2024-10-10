@@ -24,7 +24,6 @@ public class WordGuess {
         randomWord = secretWord[(int) (Math.random()*secretWord.length)];
         System.out.println(randomWord);
 
-        //initializing sb
         sb = new StringBuffer();
 
             for (int i = 0; i < randomWord.length(); i++){
